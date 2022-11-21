@@ -14,10 +14,6 @@ namespace DevExam.Dao
         public DbSet<Customer> Customers => Set<Customer>();
         public DbSet<Account> Accounts => Set<Account>();
 
-        /*protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseInMemoryDatabase(databaseName: "CustomersDb");
-        }*/
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());

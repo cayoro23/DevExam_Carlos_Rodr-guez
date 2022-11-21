@@ -19,13 +19,7 @@ namespace DevExam.Dao.Impl
 
         public List<Customer> GetCustomersThanAccountAmount(double amount)
         {
-            return this._context.Customers
-                .Join(
-                    this._context.Accounts.Where(account => account.Amount < amount),
-                    customer => customer.Id,
-                    account => account.Number,
-                    (customer, account) => customer
-                ).ToList();
+            throw new NotImplementedException();
         }
     }
 }
