@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DevExamTest
 {
-    public class Tests
+    internal class CustomerDaoTest
     {
         ApplicationDbContext context;
 
@@ -16,6 +16,7 @@ namespace DevExamTest
             .UseInMemoryDatabase(databaseName: "pick_or_generate_a_unique_name_here")
             .Options;
             context = new ApplicationDbContext(options);
+
             List<Customer> customers = new List<Customer>(); ;
 
             for (int i = 0; i < 10; i++)

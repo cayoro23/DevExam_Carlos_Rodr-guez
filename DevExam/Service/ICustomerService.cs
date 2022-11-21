@@ -2,5 +2,6 @@
 {
     public interface ICustomerService
     {
+        List<String> GetCustomerPersonalDataList(double amount);
     }
 }
