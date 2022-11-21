@@ -11,7 +11,8 @@ namespace DevExam.Model
         public string Name { get; set; }
         public string Lastname { get; set; }
 
-        public List<Account> Accounts { get; set; }
+        //public ICollection<Account>? Accounts { get; set; }
+        public List<Account>? Accounts { get; set; }
 
         public Customer()
         {
@@ -24,6 +25,7 @@ namespace DevExam.Model
             Name = name;
             Lastname = lastname;
         }
+        //public Customer(int id, string name, string lastname, ICollection<Account> accounts)
         public Customer(int id, string name, string lastname, List<Account> accounts)
         {
             Id = id;

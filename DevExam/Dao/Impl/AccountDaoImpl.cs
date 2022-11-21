@@ -4,9 +4,11 @@ namespace DevExam.Dao.Impl
 {
     public class AccountDaoImpl : IAccountDao
     {
-        public List<Customer> GetCustomers()
+        private readonly ApplicationDbContext applicationDbContext;
+
+        public AccountDaoImpl(ApplicationDbContext applicationDbContext)
         {
-            throw new NotImplementedException();
+            this.applicationDbContext = applicationDbContext;
         }
     }
 }

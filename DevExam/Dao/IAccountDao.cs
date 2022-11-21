@@ -4,6 +4,5 @@ namespace DevExam.Dao
 {
     public interface IAccountDao
     {
-        List<Customer> GetCustomers();
     }
 }

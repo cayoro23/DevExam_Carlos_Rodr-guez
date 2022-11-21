@@ -1,15 +1,21 @@
 using DevExam.Dao;
+using DevExam.Dao.Impl;
 using DevExam.Model;
+using Microsoft.EntityFrameworkCore;
 
 namespace DevExamTest
 {
     public class Tests
     {
+        ApplicationDbContext context;
+
         [SetUp]
         public void Setup()
         {
-
-            var context = new ApplicationDbContext();
+            var options = new DbContextOptionsBuilder<ApplicationDbContext>()
+            .UseInMemoryDatabase(databaseName: "pick_or_generate_a_unique_name_here")
+            .Options;
+            context = new ApplicationDbContext(options);
             List<Customer> customers = new List<Customer>(); ;
 
             for (int i = 0; i < 10; i++)
@@ -24,12 +30,12 @@ namespace DevExamTest
                 Random rnd = new Random();
                 List<Account> accounts = new List<Account>();
 
-                for (int j = 0; j < 10; j++)
+                for (int j = i * 10; j < (i + 1) * 10; j++)
                 {
                     Account account = new Account()
                     {
-                        Number = (i + 1),
-                        Amount = rnd.Next(100)
+                        Number = (j + 1),
+                        Amount = (j + 1) * 10
                     };
                     accounts.Add(account);
                 }
@@ -45,7 +51,8 @@ namespace DevExamTest
         [Test]
         public void Test1()
         {
-            Assert.Pass();
+            var customerDao = new CustomerDaoImpl(context);
+            Assert.That(customerDao.GetCustomersThanAccountAmount(60).Count, Is.EqualTo(5));
         }
     }
 }

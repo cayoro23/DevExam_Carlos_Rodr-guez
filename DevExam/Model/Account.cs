@@ -9,6 +9,7 @@ namespace DevExam.Model
         [Key]
         public int Number { get; set; }
         public double Amount { get; set; }
+        public int CustomerId { get; set; }
         public Customer Customer { get; set; }
 
         public Account()
