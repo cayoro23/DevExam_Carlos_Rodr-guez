@@ -1,7 +1,6 @@
-﻿namespace DevExam.Service
+﻿namespace DevExam.Service;
+
+public interface ICustomerService
 {
-    public interface ICustomerService
-    {
-        List<string> GetCustomerPersonalDataList(double amount);
-    }
+    List<string> GetCustomerPersonalDataList(double amount);
 }

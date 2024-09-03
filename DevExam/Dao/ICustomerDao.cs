@@ -1,9 +1,8 @@
 ﻿using DevExam.Model;
 
-namespace DevExam.Dao
+namespace DevExam.Dao;
+
+public interface ICustomerDao
 {
-    public interface ICustomerDao
-    {
-        List<Customer> GetCustomersThanAccountAmount(double amount);
-    }
+    List<Customer> GetCustomersThanAccountAmount(double amount);
 }

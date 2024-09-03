@@ -1,12 +1,21 @@
 ﻿using DevExam.Dao;
 
-namespace DevExam.Service.Impl
+namespace DevExam.Service.Impl;
+
+public class CustomerServiceImpl : ICustomerService
 {
-    public class CustomerServiceImpl : ICustomerService
+    private readonly ICustomerDao _customerDao;
+
+    public CustomerServiceImpl(ICustomerDao customerDao)
     {
-        List<string> ICustomerService.GetCustomerPersonalDataList(double amount)
-        {
-            throw new NotImplementedException();
-        }
+        _customerDao = customerDao;
+    }
+
+    public List<string> GetCustomerPersonalDataList(double amount)
+    {
+        return _customerDao
+            .GetCustomersThanAccountAmount(amount)
+            .Select(x => $"{x.Name} {x.Lastname}")
+            .ToList();
     }
 }
